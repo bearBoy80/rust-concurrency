@@ -1,6 +1,9 @@
 use core::fmt;
-use std::{ops::{Add, AddAssign, Mul}, sync::mpsc, thread};
-
+use std::{
+    ops::{Add, AddAssign, Mul},
+    sync::mpsc,
+    thread,
+};
 
 use crate::{dot_product, Vector};
 
@@ -11,28 +14,28 @@ pub struct Matrix<T: fmt::Debug> {
     row: usize, // 行
     col: usize, //列
 }
-pub struct MsgInput<T>{
+pub struct MsgInput<T> {
     idx: usize,
-    row:Vector<T>,
-    col:Vector<T>,
+    row: Vector<T>,
+    col: Vector<T>,
 }
 impl<T> MsgInput<T> {
     fn new(idx: usize, row: Vector<T>, col: Vector<T>) -> Self {
         Self { idx, row, col }
     }
 }
-pub struct MsgOutput<T>{
+pub struct MsgOutput<T> {
     idx: usize,
-    value :T,
+    value: T,
 }
 
-pub struct Msg<T>{
-    input :MsgInput<T>,
-    sender :oneshot::Sender<MsgOutput<T>>,
+pub struct Msg<T> {
+    input: MsgInput<T>,
+    sender: oneshot::Sender<MsgOutput<T>>,
 }
-impl <T> Msg<T>  {
-    fn new(input: MsgInput<T>, sender: oneshot::Sender<MsgOutput<T>>)->Self{
-        Self{input,sender}
+impl<T> Msg<T> {
+    fn new(input: MsgInput<T>, sender: oneshot::Sender<MsgOutput<T>>) -> Self {
+        Self { input, sender }
     }
 }
 pub fn multiply<T>(a: &Matrix<T>, b: &Matrix<T>) -> anyhow::Result<Matrix<T>>
@@ -42,31 +45,31 @@ where
     if a.col != b.row {
         return Err(anyhow::anyhow!("matrix multi error: a.col != b.row"));
     }
-    const NUM_THREADS: usize =4;
+    const NUM_THREADS: usize = 4;
     //构造sender
     let senders = (0..NUM_THREADS)
-    .map(|_| {
-        let (tx, rx) = mpsc::channel::<Msg<T>>();
-        thread::spawn(move || {
-            for msg in rx {
-                let value = dot_product(msg.input.row, msg.input.col)?;
-                if let Err(e) = msg.sender.send(MsgOutput {
-                    idx: msg.input.idx,
-                    value,
-                }) {
-                    eprintln!("Send error: {:?}", e);
+        .map(|_| {
+            let (tx, rx) = mpsc::channel::<Msg<T>>();
+            thread::spawn(move || {
+                for msg in rx {
+                    let value = dot_product(msg.input.row, msg.input.col)?;
+                    if let Err(e) = msg.sender.send(MsgOutput {
+                        idx: msg.input.idx,
+                        value,
+                    }) {
+                        eprintln!("Send error: {:?}", e);
+                    }
                 }
-            }
-            Ok::<_,anyhow::Error >(())
-        });
-        tx
-    })
-    .collect::<Vec<_>>();
-    // 
+                Ok::<_, anyhow::Error>(())
+            });
+            tx
+        })
+        .collect::<Vec<_>>();
+    //
     let matrix_len = a.row * b.col;
     let mut receivers = Vec::with_capacity(matrix_len);
     // 多线程去做点乘
-    let mut data: Vec<T> = vec![T::default();matrix_len];
+    let mut data: Vec<T> = vec![T::default(); matrix_len];
     for i in 0..a.row {
         for j in 0..b.col {
             let row = Vector::new(&a.data[i * a.col..(i + 1) * a.col]);
@@ -86,7 +89,7 @@ where
             receivers.push(rx);
         }
     }
-      // map/reduce: reduce phase
+    // map/reduce: reduce phase
     for rx in receivers {
         let output = rx.recv()?;
         data[output.idx] = output.value;
@@ -119,9 +122,9 @@ mod tests {
     }
     #[test]
     fn test_mult_matrix_by2() {
-        let a: Matrix<i32> = Matrix::new([1, 2, 3, 4, 5, 6,7,8,9,10,11,12], 3, 4);
-        let b: Matrix<i32> = Matrix::new([1, 2, 3, 4, 5, 6,7,8], 4, 2);
+        let a: Matrix<i32> = Matrix::new([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12], 3, 4);
+        let b: Matrix<i32> = Matrix::new([1, 2, 3, 4, 5, 6, 7, 8], 4, 2);
         let c = multiply(&a, &b).unwrap();
-        assert_eq!(c.data,vec![50, 60, 114, 140, 178, 220]);
+        assert_eq!(c.data, vec![50, 60, 114, 140, 178, 220]);
     }
 }
