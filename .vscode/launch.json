@@ -1,0 +1,397 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in library 'rust-concurrency'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--lib",
+                    "--package=rust-concurrency"
+                ],
+                "filter": {
+                    "name": "rust-concurrency",
+                    "kind": "lib"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug executable 'rust-concurrency'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--bin=rust-concurrency",
+                    "--package=rust-concurrency"
+                ],
+                "filter": {
+                    "name": "rust-concurrency",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in executable 'rust-concurrency'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--bin=rust-concurrency",
+                    "--package=rust-concurrency"
+                ],
+                "filter": {
+                    "name": "rust-concurrency",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug example 'stroke'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--example=stroke",
+                    "--package=rust-concurrency"
+                ],
+                "filter": {
+                    "name": "stroke",
+                    "kind": "example"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in example 'stroke'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--example=stroke",
+                    "--package=rust-concurrency"
+                ],
+                "filter": {
+                    "name": "stroke",
+                    "kind": "example"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug example 'futures'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--example=futures",
+                    "--package=rust-concurrency"
+                ],
+                "filter": {
+                    "name": "futures",
+                    "kind": "example"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in example 'futures'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--example=futures",
+                    "--package=rust-concurrency"
+                ],
+                "filter": {
+                    "name": "futures",
+                    "kind": "example"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug example 'futures-01'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--example=futures-01",
+                    "--package=rust-concurrency"
+                ],
+                "filter": {
+                    "name": "futures-01",
+                    "kind": "example"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in example 'futures-01'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--example=futures-01",
+                    "--package=rust-concurrency"
+                ],
+                "filter": {
+                    "name": "futures-01",
+                    "kind": "example"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug example 'metrics'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--example=metrics",
+                    "--package=rust-concurrency"
+                ],
+                "filter": {
+                    "name": "metrics",
+                    "kind": "example"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in example 'metrics'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--example=metrics",
+                    "--package=rust-concurrency"
+                ],
+                "filter": {
+                    "name": "metrics",
+                    "kind": "example"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug example 'ametrics'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--example=ametrics",
+                    "--package=rust-concurrency"
+                ],
+                "filter": {
+                    "name": "ametrics",
+                    "kind": "example"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in example 'ametrics'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--example=ametrics",
+                    "--package=rust-concurrency"
+                ],
+                "filter": {
+                    "name": "ametrics",
+                    "kind": "example"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug example 'futures-02'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--example=futures-02",
+                    "--package=rust-concurrency"
+                ],
+                "filter": {
+                    "name": "futures-02",
+                    "kind": "example"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in example 'futures-02'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--example=futures-02",
+                    "--package=rust-concurrency"
+                ],
+                "filter": {
+                    "name": "futures-02",
+                    "kind": "example"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug example 'unpin'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--example=unpin",
+                    "--package=rust-concurrency"
+                ],
+                "filter": {
+                    "name": "unpin",
+                    "kind": "example"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in example 'unpin'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--example=unpin",
+                    "--package=rust-concurrency"
+                ],
+                "filter": {
+                    "name": "unpin",
+                    "kind": "example"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug example 'gene'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--example=gene",
+                    "--package=rust-concurrency"
+                ],
+                "filter": {
+                    "name": "gene",
+                    "kind": "example"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in example 'gene'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--example=gene",
+                    "--package=rust-concurrency"
+                ],
+                "filter": {
+                    "name": "gene",
+                    "kind": "example"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug example 'dredis'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--example=dredis",
+                    "--package=rust-concurrency"
+                ],
+                "filter": {
+                    "name": "dredis",
+                    "kind": "example"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in example 'dredis'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--example=dredis",
+                    "--package=rust-concurrency"
+                ],
+                "filter": {
+                    "name": "dredis",
+                    "kind": "example"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        }
+    ]
+}
